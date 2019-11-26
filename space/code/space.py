@@ -1,5 +1,5 @@
 import math
-import numpy as num
+import numpy as np
 from openpyxl import Workbook
 
 def gravity(posistion):
@@ -27,8 +27,8 @@ ws2.title = 'orbital velocities'
 ws3.title = 'gravity'
 
 #parameters
-pos = num.array([-1.0,0.0])
-vel = num.array([0.0, 1.5])
+pos = np.array([-1.0,0.0])
+vel = np.array([0.0, 1.5])
 actuness = 512
 steps = 1024
 
