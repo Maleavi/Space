@@ -1,17 +1,10 @@
+import space
 import math
 import numpy as np
 from openpyxl import Workbook
 
-def gravity(posistion):
-    grav = -posistion
-    sum = 0
-    for i in grav:
-        sum = sum + (i * i)
-
-    sum = math.sqrt(sum)
-    return (grav / (sum * sum * sum))
-
 def array_reader(array_thing):
+    #numpy doing shenenigans, so just made a generator for that
     for o in array_thing:
         yield o
     
@@ -28,7 +21,7 @@ ws3.title = 'gravity'
 
 #parameters
 pos = np.array([-1.0,0.0])
-vel = np.array([0.0, 1.5])
+vel = np.array([0.0, 1.35])
 actuness = 512
 steps = 1024
 
@@ -36,10 +29,10 @@ grav = 0
 
 for i in range(steps):
     pos = pos + (vel / actuness)
-    vel = vel + (gravity(pos) / (actuness))
+    vel = vel + (space.gravity(pos) / (actuness))
     grav = 0
 
-    for d in gravity(pos):
+    for d in space.gravity(pos):
         grav = grav + (d * d)
 
     grav = math.sqrt(grav)
